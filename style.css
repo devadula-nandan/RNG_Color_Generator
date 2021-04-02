@@ -1,0 +1,61 @@
+body,html{
+    margin: 0;
+    height: 100%;
+    
+}
+
+.main{
+    display: flex;
+    height: 100%;
+}
+.clr {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+.ambl,.ambr{
+    height: 100%;
+    width: 20px;
+    background-color: rgba(0, 0, 0, 0.561);
+    position: absolute;
+}
+.ambl{
+    left: 0px;
+    opacity: 0;
+}
+.ambr{
+    right: 0px;
+    opacity: 0;
+}
+.ambl:hover{
+    opacity: 1;
+}
+.ambr:hover{
+    opacity: 1;
+}
+.del{
+    background-color: rgb(230, 230, 230);
+    height: 50px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    color:rgb(95, 95, 95);
+    opacity: 0;
+   
+}
+.del:hover{
+     background-color: rgb(240, 240, 240);
+    color:rgb(22, 22, 22);
+}
+.clr:hover .del{
+   opacity: 1;
+   
+}
+svg,path{
+    margin: auto;
+    pointer-events: none;
+}
