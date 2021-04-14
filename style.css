@@ -1,9 +1,12 @@
-body,html{
+html,body{
+    box-sizing: border-box;
     margin: 0;
     height: 100%;
-    
 }
-
+*{
+    transition: all 0.2s ease-in-out;
+    animation-duration: 0.2s;
+}
 .main{
     display: flex;
     height: 100%;
@@ -12,13 +15,21 @@ body,html{
     height: 100%;
     width: 100%;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
+    animation-name: widthIncrease;
+}
+@keyframes widthIncrease {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    } 
 }
 .ambl,.ambr{
     height: 100%;
-    width: 20px;
+    width: 1px;
     background-color: rgba(0, 0, 0, 0.561);
     position: absolute;
 }
@@ -30,32 +41,107 @@ body,html{
     right: 0px;
     opacity: 0;
 }
-.ambl:hover{
+.ambl:hover,.ambr:hover{
     opacity: 1;
+    width: 20px;
 }
-.ambr:hover{
-    opacity: 1;
+.controls{
+    padding: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 104px;
+}
+.del:first-child{
+    margin-top: 0;  
+}
+.del:last-child{
+    margin-bottom: 0;  
 }
 .del{
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(216, 216, 216);
     height: 50px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
     width: 50px;
+    margin: 30% 0%;
     border-radius: 50%;
     display: flex;
     color:rgb(95, 95, 95);
     opacity: 0;
-   
+    position: relative;
 }
 .del:hover{
-     background-color: rgb(240, 240, 240);
-    color:rgb(22, 22, 22);
+     background-color: rgb(233, 233, 233);
 }
-.clr:hover .del{
+.del:hover .cross1,.del:hover .cross2{
+    background-color: rgb(34, 34, 34);
+    width: 18px;
+    left: 16px;
+}
+.cross1{
+    height: 3px;
+    width: 14px;
+    left: 18px;
+    border-radius: 2px;
+    top: 23.5px;
+    transform: rotate(-45deg);
+    position: absolute;
+    background-color: rgb(121, 121, 121);
+    opacity: 0;
+}
+.cross2{
+  height: 3px;
+  width: 14px;
+  border-radius: 2px;
+  position: absolute;
+  left: 18px;
+  transform: rotate(45deg);
+  top: 23.5px;
+  background-color: rgb(121, 121, 121);
+  opacity: 0;
+}
+.controls:hover .del,.controls:hover .cross1,.controls:hover .cross2{
    opacity: 1;
    
 }
 svg,path{
     margin: auto;
     pointer-events: none;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .main{
+        display: block;
+        height: 50%;
+    }
+    .ambl,.ambr{
+        height: 1px;
+        width: 100%;
+    }
+    .ambl{
+        top: 0px;
+    }
+    .ambr{
+        bottom: 0px;
+    }
+    .ambl:hover,.ambr:hover{
+        height: 20px;
+        width: 100%;
+    }
+    .clr {
+        animation-name: heightIncrease;
+    }
+    @keyframes heightIncrease {
+        0% {
+            height: 0%;
+        }
+        100% {
+            height: 100%;
+        } 
+    }
 }

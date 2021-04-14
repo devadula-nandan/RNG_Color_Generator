@@ -24,25 +24,49 @@ class ColorGenerator {
         let i;
         for (i = 0; i < number; i++) {
             const newColorBlock = ce("div");
+            const controls = ce("div");
             const deleteColor = ce("div");
-            const deleteIcon = ce("i");
-            deleteIcon.classList.add("fas");
-            deleteIcon.classList.add("fa-times");
+            const cross1 = ce("div");
+            const cross2 = ce("div");
+            cross1.classList.add("cross1");
+            controls.classList.add("controls");
+            cross2.classList.add("cross2");
             deleteColor.classList.add("del");
+            deleteColor.setAttribute('title', "delete");
             newColorBlock.classList.add("clr");
-            newColorBlock.addEventListener("dblclick", (e) => {
-                e.target.style.backgroundColor = `rgb(${rng(0, 255)},${rng(0, 255)},${rng(0, 255)})`;
+            newColorBlock.addEventListener("wheel", (we) => {
+                we.target.style.backgroundColor = `rgb(${rng(0, 255)},${rng(0, 255)},${rng(0, 255)})`;
+            });
+            newColorBlock.addEventListener("mousedown", (e) => {
+                if (e.which == 3) {
+                    switch (e.target.classList[0]) {
+                        case "del":
+                            e.target.style.backgroundColor = "rgb(216, 216, 216)";
+                            break;
+                        case "cross1":
+                        case "cross2":
+                            e.target.style.backgroundColor = "rgb(121, 121, 121)";
+                            break;
+                        case "controls":
+                            e.target.style.backgroundColor = "rgba(0,0,0,0)";
+                            break;
+                    }
+
+                }
+
             });
             newColorBlock.addEventListener("click", (e) => {
                 navigator.clipboard.writeText(e.target.style.backgroundColor);
             });
             newColorBlock.style.backgroundColor = `rgb(${rng(0, 255)},${rng(0, 255)},${rng(0, 255)})`;
             deleteColor.addEventListener("click", (e) => {
-                console.log(e.target.parentElement.remove());
+                e.path[2].remove()
                 this.colorBlocksRange[0]--;
             });
-            deleteColor.appendChild(deleteIcon);
-            newColorBlock.appendChild(deleteColor);
+            deleteColor.appendChild(cross1);
+            deleteColor.appendChild(cross2);
+            controls.appendChild(deleteColor);
+            newColorBlock.appendChild(controls);
             pos == "left" ? qs(".main").insertBefore(newColorBlock, qs(".main").childNodes[0]) : qs(".main").appendChild(newColorBlock);
         }
     }
@@ -71,6 +95,7 @@ CGApp.createBlock(2, "right");
 
 
 //eventlistners
+window.addEventListener("contextmenu", e => e.preventDefault());
 qs(".del").addEventListener("click", (e) => {
     CGApp.deleteColor(e);
 })
