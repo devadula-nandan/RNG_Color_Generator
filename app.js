@@ -1,19 +1,5 @@
-//some shortcut functions
-qs = (query) => document.querySelector(`${query}`);
-qsa = (query) => document.querySelectorAll(`${query}`);
-ce = (element) => document.createElement(`${element}`);
-lsgi = (key) => {//returns or gets array of corresponding key from ls
-    if (localStorage.getItem(key) === null) {
-        return key = [];
-    } else {
-        return key = JSON.parse(localStorage.getItem(key));
-    }
-}
-lssi = (key, value) => {//sets the modified array(value) to the corresponding key in ls
-    localStorage.setItem(key, JSON.stringify(value));
-}
-//an rng function
-const rng = (lower, upper) => Math.floor(lower + (upper + 1 - lower) * Math.random());
+
+import { qs, qsa, ce, lsgi, lssi, rng } from "./myUtils.js";
 
 class ColorGenerator {
     constructor() {

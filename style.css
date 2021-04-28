@@ -90,6 +90,7 @@ html,body{
     position: absolute;
     background-color: rgb(121, 121, 121);
     opacity: 0;
+    pointer-events: none;
 }
 .cross2{
   height: 3px;
@@ -101,6 +102,7 @@ html,body{
   top: 23.5px;
   background-color: rgb(121, 121, 121);
   opacity: 0;
+  pointer-events: none;
 }
 .controls:hover .del,.controls:hover .cross1,.controls:hover .cross2{
    opacity: 1;
