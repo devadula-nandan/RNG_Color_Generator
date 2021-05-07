@@ -24,7 +24,7 @@ class ColorGenerator {
                 we.target.style.backgroundColor = `rgb(${rng(0, 255)},${rng(0, 255)},${rng(0, 255)})`;
             });
             newColorBlock.addEventListener("mousedown", (e) => {
-                if (e.which == 3) {
+                if (e.button == 2) {
                     switch (e.target.classList[0]) {
                         case "del":
                             e.target.style.backgroundColor = "rgb(216, 216, 216)";
