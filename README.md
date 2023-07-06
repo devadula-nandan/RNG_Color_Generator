@@ -1,3 +1,4 @@
+<!-- '{"name":"RNG Color Generator","version": 12,"tech": ["Javascript","HTML","CSS"],"tags":["frontend"],"snapshots":[]}' -->
 # rng-colors
 generate colors on rng basis, contains different approaches
 
